@@ -46,6 +46,7 @@
     max-width: 700px;
     margin: 0 auto;
     padding: 40px 20px 80px;
+    position: relative;
   }
 
   a { color: var(--rose); text-decoration: none; }
@@ -58,18 +59,13 @@
   li:before { content: "- "; color: var(--muted); }
   hr { border: none; border-top: 1px dashed var(--border); margin: 34px 0; }
   .muted { color: var(--muted); }
-
-  /* Mobile-Friendly Flex Header */
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 6px;
-  }
-  .top { color: var(--pine); margin: 0; }
+  .top { margin-bottom: 6px; color: var(--pine); }
 
   /* Minimal Theme Switcher */
   .theme-toggle {
+    position: absolute;
+    top: 40px;
+    right: 20px;
     background: transparent;
     border: 1px solid var(--border);
     color: var(--muted);
@@ -86,11 +82,9 @@
 </head>
 <body>
 
-<div class="header-top">
-  <p class="top">$ whoami</p>
-  <button id="theme-btn" class="theme-toggle" aria-label="Toggle Theme">theme: main</button>
-</div>
+<button id="theme-btn" class="theme-toggle" aria-label="Toggle Theme">theme: main</button>
 
+<p class="top">$ whoami</p>
 <h1>paarth choukikar</h1>
 <p class="muted">cse fresher @ manit | ex-iiit nagpur | 18</p>
 
