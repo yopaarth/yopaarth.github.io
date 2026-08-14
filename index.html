@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>yopaarth</title>
+<style>
+  /* --- Rosé Pine Theme Variables --- */
+  :root {
+    /* Default: Rosé Pine Main */
+    --bg: #191724;
+    --fg: #e0def4;
+    --rose: #ebbcba;
+    --gold: #f6c177;
+    --pine: #31748f;
+    --muted: #908caa;
+    --border: #26233a;
+  }
+
+  [data-theme="moon"] {
+    --bg: #232136;
+    --fg: #e0def4;
+    --rose: #ea9a97;
+    --gold: #f6c177;
+    --pine: #3e8fb0;
+    --muted: #908caa;
+    --border: #393552;
+  }
+
+  [data-theme="dawn"] {
+    --bg: #faf4ed;
+    --fg: #575279;
+    --rose: #d7827e;
+    --gold: #ea9d34;
+    --pine: #286983;
+    --muted: #9893a5;
+    --border: #f2e9e1;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  a { color: var(--rose); text-decoration: none; }
+  a:hover { color: var(--bg); background: var(--rose); text-decoration: underline; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 16px; margin: 34px 0 10px; text-decoration: underline; color: var(--gold); }
+  p { margin: 10px 0; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { margin: 4px 0; }
+  li:before { content: "- "; color: var(--muted); }
+  hr { border: none; border-top: 1px dashed var(--border); margin: 34px 0; }
+  .muted { color: var(--muted); }
+
+  /* Mobile-Friendly Flex Header */
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .top { color: var(--pine); margin: 0; }
+
+  /* Minimal Theme Switcher */
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: monospace;
+    font-size: 13px;
+    padding: 2px 8px;
+    cursor: pointer;
+  }
+  .theme-toggle:hover {
+    color: var(--fg);
+    border-color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<div class="header-top">
+  <p class="top">$ whoami</p>
+  <button id="theme-btn" class="theme-toggle" aria-label="Toggle Theme">theme: main</button>
+</div>
+
+<h1>paarth choukikar</h1>
+<p class="muted">cse fresher @ manit | ex-iiit nagpur | 18</p>
+
+<p>
+i'm a computer science undergrad currently in my first year at manit, after
+spending one semester at iiit nagpur. i write c++, c and python,
+build backends with django and flask, and run linux day to day - including a dwm
+fork (the suckless window manager) that i've been maintaining for close to two years.
+i've also been doing competitive programming for almost three years now, alongside
+git, bash scripting and server management.
+</p>
+
+<p>
+outside of that, i'm always up for a good hackathon and enjoy picking up new tech
+whenever i get the chance. i'm also into design and video editing, and i play
+the guitar in whatever free time is left.
+</p>
+
+<hr>
+
+<h2>skills</h2>
+<ul>
+  <li>languages: c++, c, python</li>
+  <li>frameworks: django, flask</li>
+  <li>tools: git, bash, linux, server management</li>
+</ul>
+
+<h2>projects</h2>
+<ul>
+  <li>dwm fork - suckless window manager, patched in c, ~2 years</li>
+  <li>dmenu fork</li>
+  <li>st fork - suckless terminal</li>
+  <li>firefox fork</li>
+</ul>
+<p>i enjoy bloat-free, open-source software and like tweaking it to fit exactly how i work.</p>
+
+<h2>education</h2>
+<ul>
+  <li>manit - b.tech cse (current, year 1)</li>
+  <li>iiit nagpur - b.tech cse (1 semester)</li>
+</ul>
+
+<h2>also into</h2>
+<ul>
+  <li>hackathons and learning new tech</li>
+  <li>design</li>
+  <li>video editing</li>
+  <li>playing guitar</li>
+  <li>bench pressing</li>
+</ul>
+
+<h2>links</h2>
+<ul>
+  <li><a href="mailto:tbpaarth@gmail.com">email</a></li>
+  <li><a href="https://github.com/yopaarth" target="_blank" rel="noopener">github</a></li>
+  <li><a href="https://codeforces.com/profile/prozpekt1174" target="_blank" rel="noopener">codeforces</a></li>
+  <li><a href="https://twitter.com/yopaarth" target="_blank" rel="noopener">twitter</a></li>
+  <li><a href="https://instagram.com/paarthq" target="_blank" rel="noopener">instagram</a></li>
+</ul>
+
+<hr>
+<p class="muted">"a true warrior needs no sword" - vinland saga</p>
+<p class="muted">last updated <span id="d"></span></p>
+
+<script>
+// Date Auto-Update
+document.getElementById('d').textContent = new Date().toISOString().slice(0,10);
+
+// Rosé Pine Theme Switcher
+const themes = ['main', 'moon', 'dawn'];
+const btn = document.getElementById('theme-btn');
+
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  btn.textContent = `theme: ${theme}`;
+  localStorage.setItem('theme', theme);
+}
+
+btn.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') || 'main';
+  const next = themes[(themes.indexOf(current) + 1) % themes.length];
+  setTheme(next);
+});
+
+// Load Saved Theme Preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme && themes.includes(savedTheme)) {
+  setTheme(savedTheme);
+}
+</script>
+
+</body>
+</html>
