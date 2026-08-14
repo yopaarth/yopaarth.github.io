@@ -41,108 +41,127 @@
     background: var(--bg);
     color: var(--fg);
     font-family: monospace;
-    font-size: 16px;
+    font-size: 1.05rem;
     line-height: 1.6;
     max-width: 700px;
     margin: 0 auto;
-    padding: 40px 20px 80px;
-    position: relative;
+    padding: 30px 20px 60px;
+    box-sizing: border-box;
   }
 
   a { color: var(--rose); text-decoration: none; }
   a:hover { color: var(--bg); background: var(--rose); text-decoration: underline; }
-  h1 { font-size: 22px; margin-bottom: 4px; }
-  h2 { font-size: 16px; margin: 34px 0 10px; text-decoration: underline; color: var(--gold); }
-  p { margin: 10px 0; }
+  h1 { font-size: 1.5rem; margin-bottom: 4px; }
+  h2 { font-size: 1.1rem; margin: 34px 0 10px; text-decoration: underline; color: var(--gold); }
+  p { margin: 12px 0; }
   ul { list-style: none; padding: 0; margin: 0; }
-  li { margin: 4px 0; }
+  li { margin: 6px 0; }
   li:before { content: "- "; color: var(--muted); }
-  hr { border: none; border-top: 1px dashed var(--border); margin: 34px 0; }
+  hr { border: none; border-top: 1px dashed var(--border); margin: 30px 0; }
   .muted { color: var(--muted); }
-  .top { margin-bottom: 6px; color: var(--pine); }
+
+  /* Flexible Top Header for Mobile & Desktop */
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .top { color: var(--pine); margin: 0; }
 
   /* Minimal Theme Switcher */
   .theme-toggle {
-    position: absolute;
-    top: 40px;
-    right: 20px;
     background: transparent;
     border: 1px solid var(--border);
     color: var(--muted);
     font-family: monospace;
-    font-size: 13px;
-    padding: 2px 8px;
+    font-size: 0.85rem;
+    padding: 3px 8px;
     cursor: pointer;
   }
   .theme-toggle:hover {
     color: var(--fg);
     border-color: var(--muted);
   }
+
+  /* Mobile Tweaks */
+  @media (max-width: 480px) {
+    body {
+      padding: 20px 16px 40px;
+      font-size: 1rem;
+    }
+    h1 { font-size: 1.35rem; }
+    h2 { font-size: 1.05rem; }
+  }
 </style>
 </head>
 <body>
 
-<button id="theme-btn" class="theme-toggle" aria-label="Toggle Theme">theme: main</button>
+<div class="header-top">
+  <p class="top">$ whoami</p>
+  <button id="theme-btn" class="theme-toggle" aria-label="Toggle Theme">theme: main</button>
+</div>
 
-<p class="top">$ whoami</p>
 <h1>paarth choukikar</h1>
 <p class="muted">cse fresher @ nit bhopal | ex-iiit nagpur | 18</p>
 
 <p>
-i'm a computer science undergrad currently in my first year at nit bhopal, after
-spending one semester at iiit nagpur. i write c++, c, and python; 
-build backends with django and flask; and run linux day-to-day—including a dwm
-fork (the suckless window manager) that i've maintained for close to two years.
-i've also been doing competitive programming for almost three years, alongside 
-working with git, bash scripting, and server management.
+i'm a computer science undergraduate in my first year at nit bhopal, following
+a semester at iiit nagpur. i write c++, c, and python, and build backend services 
+with django and flask. i have 4+ years of experience working with linux and the 
+command line—including maintaining a custom dwm fork (suckless window manager) for 
+nearly 2 years. i have also been active in competitive programming for almost 3 years, 
+with 200+ problems solved on codeforces, alongside hands-on experience in git, 
+bash scripting, and server administration.
 </p>
 
 <p>
-outside of that, i'm always up for a good hackathon and enjoy picking up new tech
-whenever i get the chance. i'm also into design and video editing, and i play
-the guitar in whatever free time i have left.
+beyond core software development, i enjoy participating in hackathons and exploring 
+emerging technologies. my creative interests include UI/UX design, video editing, 
+and playing guitar.
 </p>
 
 <hr>
 
 <h2>skills</h2>
 <ul>
-  <li>languages: c++, c, python</li>
-  <li>frameworks: django, flask</li>
-  <li>tools: git, bash, linux, server management</li>
+  <li>languages: C++, C, Python</li>
+  <li>frameworks: Django, Flask</li>
+  <li>competitive programming: 200+ problems solved on Codeforces</li>
+  <li>tools & systems: Linux (4+ yrs), Bash, Git, Server Administration</li>
 </ul>
 
 <h2>projects</h2>
 <ul>
-  <li>dwm fork - suckless window manager, patched in c, ~2 years</li>
-  <li>dmenu fork</li>
-  <li>st fork - suckless terminal</li>
-  <li>firefox fork</li>
+  <li>dwm fork - suckless window manager, custom patches in C (~2 years)</li>
+  <li>dmenu fork - suckless dynamic menu customization</li>
+  <li>st fork - suckless terminal configuration</li>
+  <li>firefox fork - lightweight custom build</li>
 </ul>
-<p>i enjoy bloat-free, open-source software and like tweaking it to fit exactly how i work.</p>
+<p>i appreciate minimal, bloat-free open-source software and enjoy customizing toolchains to build efficient workflows.</p>
 
 <h2>education</h2>
 <ul>
-  <li>nit bhopal - b.tech cse (current, year 1)</li>
-  <li>iiit nagpur - b.tech cse (1 semester)</li>
-  <li>rdps betul - schooling</li>
+  <li>nit bhopal - b.tech in computer science & engineering (year 1)</li>
+  <li>iiit nagpur - b.tech in computer science & engineering (1 semester)</li>
+  <li>rdps betul - secondary education</li>
 </ul>
 
-<h2>also into</h2>
+<h2>interests</h2>
 <ul>
-  <li>hackathons and learning new tech</li>
-  <li>design</li>
+  <li>hackathons & emerging tech</li>
+  <li>design & media</li>
   <li>video editing</li>
-  <li>playing guitar</li>
-  <li>bench pressing</li>
+  <li>guitar</li>
+  <li>strength training (bench press)</li>
 </ul>
 
 <h2>links</h2>
 <ul>
   <li><a href="mailto:tbpaarth@gmail.com">email</a></li>
   <li><a href="https://github.com/yopaarth" target="_blank" rel="noopener">github</a></li>
-  <li><a href="https://codeforces.com/profile/prozpekt1174" target="_blank" rel="noopener">codeforces</a></li>
-  <li><a href="https://twitter.com/yopaarth" target="_blank" rel="noopener">twitter</a></li>
+  <li><a href="https://codeforces.com/profile/prozpekt1174" target="_blank" rel="noopener">codeforces (200+ solved)</a></li>
+  <li><a href="https://twitter.com/yopaarth" target="_blank" rel="noopener">x / twitter</a></li>
   <li><a href="https://instagram.com/paarthq" target="_blank" rel="noopener">instagram</a></li>
 </ul>
 
