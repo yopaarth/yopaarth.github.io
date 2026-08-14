@@ -37,6 +37,13 @@
     --border: #f2e9e1;
   }
 
+  html {
+    background: var(--bg);
+    min-height: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+
   body {
     background: var(--bg);
     color: var(--fg);
@@ -50,9 +57,52 @@
   }
 
   a { color: var(--rose); text-decoration: none; }
-  a:hover { color: var(--bg); background: var(--rose); text-decoration: underline; }
+  
+  @media (hover: hover) {
+    a:hover { color: var(--bg); background: var(--rose); text-decoration: underline; }
+  }
+
+  /* --- Header Bar --- */
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .top { color: var(--pine); margin: 0; }
+
+  /* Minimal Bordered "Contact Me" Button with Mobile Fix */
+  .contact-btn {
+    color: var(--gold);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.88rem;
+    padding: 3px 8px;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Hover effect for desktop mouse */
+  @media (hover: hover) {
+    .contact-btn:hover {
+      color: var(--bg);
+      background: var(--gold);
+      border-color: var(--gold);
+      text-decoration: none;
+    }
+  }
+
+  /* Instant active feedback on tap */
+  .contact-btn:active {
+    color: var(--bg);
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
   h1 { font-size: 1.5rem; margin-bottom: 4px; }
-  h2 { font-size: 1.1rem; margin: 34px 0 10px; text-decoration: underline; color: var(--gold); }
+  h2 { font-size: 1.1rem; margin: 34px 0 10px; text-decoration: underline; color: var(--gold); scroll-margin-top: 20px; }
   p { margin: 12px 0; }
   ul { list-style: none; padding: 0; margin: 0; }
   li { margin: 6px 0; }
@@ -60,38 +110,10 @@
   hr { border: none; border-top: 1px dashed var(--border); margin: 30px 0; }
   .muted { color: var(--muted); }
 
-  /* Flexible Top Header for Mobile & Desktop */
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  .top { color: var(--pine); margin: 0; }
-
-  /* Minimal Theme Switcher */
-  .theme-toggle {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    font-family: monospace;
-    font-size: 0.85rem;
-    padding: 3px 8px;
-    cursor: pointer;
-  }
-  .theme-toggle:hover {
-    color: var(--fg);
-    border-color: var(--muted);
-  }
-
-  /* Mobile Tweaks */
   @media (max-width: 480px) {
-    body {
-      padding: 20px 16px 40px;
-      font-size: 1rem;
-    }
+    body { padding: 20px 16px 40px; font-size: 1rem; }
     h1 { font-size: 1.35rem; }
-    h2 { font-size: 1.05rem; }
+    .contact-btn { font-size: 0.8rem; padding: 2px 6px; }
   }
 </style>
 </head>
@@ -99,7 +121,7 @@
 
 <div class="header-top">
   <p class="top">$ whoami</p>
-  <button id="theme-btn" class="theme-toggle" aria-label="Toggle Theme">theme: main</button>
+  <a href="#contact" class="contact-btn">[contact me]</a>
 </div>
 
 <h1>paarth choukikar</h1>
@@ -156,7 +178,7 @@ and playing guitar.
   <li>strength training (bench press)</li>
 </ul>
 
-<h2>links</h2>
+<h2 id="contact">contact & links</h2>
 <ul>
   <li><a href="mailto:tbpaarth@gmail.com">email</a></li>
   <li><a href="https://github.com/yopaarth" target="_blank" rel="noopener">github</a></li>
@@ -166,34 +188,11 @@ and playing guitar.
 </ul>
 
 <hr>
-<p class="muted">"a true warrior needs no sword" - vinland saga</p>
 <p class="muted">last updated <span id="d"></span></p>
 
 <script>
 // Date Auto-Update
 document.getElementById('d').textContent = new Date().toISOString().slice(0,10);
-
-// Rosé Pine Theme Switcher
-const themes = ['main', 'moon', 'dawn'];
-const btn = document.getElementById('theme-btn');
-
-function setTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  btn.textContent = `theme: ${theme}`;
-  localStorage.setItem('theme', theme);
-}
-
-btn.addEventListener('click', () => {
-  const current = document.documentElement.getAttribute('data-theme') || 'main';
-  const next = themes[(themes.indexOf(current) + 1) % themes.length];
-  setTheme(next);
-});
-
-// Load Saved Theme Preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme && themes.includes(savedTheme)) {
-  setTheme(savedTheme);
-}
 </script>
 
 </body>
